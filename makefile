@@ -415,8 +415,8 @@ pkgfile:
 revert :
 	@mv -f makefile.in makefile
 
-.PHONY : export
-export :
+.PHONY : export_makefile
+export_makefile :
 	@echo "#automatically generated makefile"         >  $(automakefile)
 	@echo packagename := ${packagename}               >> ${automakefile}
 	@echo major_version := ${major_version}           >> ${automakefile}
@@ -516,7 +516,7 @@ rules :
 	@echo "gcall       : shows gprof profiler call graph view result"
 	@echo "rules       : shows this text"
 	@echo "state       : show the configuration state of the package"
-	@echo "export      : export the makefile"
+	@echo "export_makefile      : export the makefile"
 	@echo "revert      : moves makefile.in to makefile"
 	@echo
 
