@@ -88,6 +88,19 @@ public:
 
       }
 
+   /// sets image data and size
+   /// don't divide by 255.0.
+   void set_float_image(float* im, int h, int w)
+      {
+         m_h = h;
+         m_w = w;
+         m_image = im;
+         if( m_verbosity > 3 ) {
+            cout<<"[set_image] saving input.bin\n";
+            save_binary("input.bin",m_image, m_h, m_w, 1, kutility::TYPE_FLOAT);
+         }
+      }      
+
    /// sets the descriptor parameters
    void set_parameters( double rad, int rad_q_no, int th_q_no, int hist_th_q_no );
 
