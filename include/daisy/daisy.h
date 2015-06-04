@@ -20,6 +20,8 @@ using kutility::l2norm;
 using kutility::scale;
 using kutility::point_transform_via_homography;
 using kutility::save_binary;
+using kutility::save_pgm;
+using kutility::save_ascii;
 
 const double g_sigma_0 = 1;
 const double g_sigma_1 = sqrt(2.0);
@@ -83,7 +85,10 @@ public:
          m_image_memory = true;
          divide(m_image, h*w, (float)255.0);
          if( m_verbosity > 3 ) {
+            cout << im[0] << " " << im[1] << " " << im[2] << "..." << endl;
+            cout << m_image[0] << " " << m_image[1] << " " << m_image[2] << "..." << endl;
             cout<<"[set_image] saving input.bin\n";
+            save_ascii("input.txt",m_image, m_h, m_w, 1, kutility::TYPE_FLOAT);
             save_binary("input.bin",m_image, m_h, m_w, 1, kutility::TYPE_FLOAT);
          }
 
@@ -99,6 +104,7 @@ public:
          m_image_memory = false;
          if( m_verbosity > 3 ) {
             cout<<"[set_image] saving input.bin\n";
+            save_ascii("input.txt",m_image, m_h, m_w, 1, kutility::TYPE_FLOAT);
             save_binary("input.bin",m_image, m_h, m_w, 1, kutility::TYPE_FLOAT);
          }
       }      

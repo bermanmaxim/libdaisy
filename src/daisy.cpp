@@ -327,7 +327,9 @@ void daisy::initialize()
       for( int ii=0; ii<m_hist_th_q_no; ii++ ) {
          string file = "gradient_layers"+num2str(ii)+".bin";
          cout<<"[initialize] saving "<<file<<endl;
-         save_binary(file,gradient_layers+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
+         // save_binary(file,gradient_layers+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
+         string fileascii = "gradient_layers"+num2str(ii)+".txt";
+         save_ascii(fileascii,gradient_layers+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
       }
    }
 
@@ -338,7 +340,9 @@ void daisy::initialize()
       for( int ii=0; ii<m_hist_th_q_no; ii++ ) {
          string file = "sgradient_layers"+num2str(ii)+".bin";
          cout<<"[initialize] saving "<<file<<endl;
-         save_binary(file,gradient_layers+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
+         // save_binary(file,gradient_layers+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
+         string fileascii = "gradient_layers"+num2str(ii)+".txt";
+         save_ascii(fileascii,gradient_layers+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
       }
    }
 
@@ -515,7 +519,10 @@ void daisy::compute_smoothed_gradient_layers()
          for( int ii=0; ii<m_hist_th_q_no; ii++ ) {
             string file = "cube"+num2str(r)+"_layer"+num2str(ii)+".bin";
             cout<<"[initialize] saving "<<file<<endl;
-            save_binary(file,cube+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
+     //       save_binary(file,cube+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
+         string fileascii = "cube"+num2str(r)+"_layer"+num2str(ii)+".ascii";
+         save_ascii(fileascii,cube+ii*m_h*m_w, m_h, m_w, 1, TYPE_FLOAT);
+
          }
       }
    }

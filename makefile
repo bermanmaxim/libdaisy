@@ -13,7 +13,8 @@ external_libraries :=
 libdir := lib
 srcdir := .
 includedir:= include
-define_flags :=
+define_flags := -DWITH_PNG
+custom_ld_flags := -lpng -lz
 #........................................
 optimize := true
 parallelize := false
@@ -25,7 +26,7 @@ profile := false
 specialize := false
 platform := native
 #........................................
-sources := src/daisy.cpp src/image_io_bmp.cpp src/image_io_png.cpp src/image_io_pnm.cpp src/image_io_jpeg.cpp src/image_manipulation.cpp src/progress_bar.cpp src/interaction.cpp src/general.cpp src/corecv.cpp
+sources := src/main.cpp src/daisy.cpp src/image_io_bmp.cpp src/image_io_png.cpp src/image_io_pnm.cpp src/image_io_jpeg.cpp src/image_manipulation.cpp src/progress_bar.cpp src/interaction.cpp src/general.cpp src/corecv.cpp
 
 ################################################################################
 ################# - MAKEFILE STATIC VARIABLES - ################################
