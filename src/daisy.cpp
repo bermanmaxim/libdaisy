@@ -39,6 +39,7 @@ daisy::daisy()
 
    m_descriptor_memory = false;
    m_workspace_memory = false;
+   m_image_memory = true;
    m_descriptor_normalization_threshold = 0.154; // sift magical number
 
    m_disable_interpolation = false;
@@ -51,7 +52,7 @@ daisy::daisy()
 
 daisy::~daisy()
 {
-   deallocate( m_image );
+   if ( m_image_memory ) deallocate( m_image );
 
    if( !m_workspace_memory ) deallocate( m_smoothed_gradient_layers );
    deallocate( m_grid_points, m_grid_point_number );
@@ -101,7 +102,7 @@ double* daisy::get_grid(int o)
 
 void daisy::reset()
 {
-   deallocate( m_image );
+   if ( m_image_memory ) deallocate( m_image );
    // deallocate( m_grid_points, m_grid_point_number );
    // deallocate( m_oriented_grid_points, g_grid_orientation_resolution );
    // deallocate( m_cube_sigmas );
@@ -113,7 +114,7 @@ void daisy::reset()
 
 void daisy::release_auxilary()
 {
-   deallocate( m_image );
+   if ( m_image_memory ) deallocate( m_image );
    deallocate( m_orientation_map );
    deallocate( m_scale_map );
 

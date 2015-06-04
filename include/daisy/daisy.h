@@ -80,6 +80,7 @@ public:
          m_h = h;
          m_w = w;
          m_image = type_cast<float,T>(im,h*w);
+         m_image_memory = true;
          divide(m_image, h*w, (float)255.0);
          if( m_verbosity > 3 ) {
             cout<<"[set_image] saving input.bin\n";
@@ -95,6 +96,7 @@ public:
          m_h = h;
          m_w = w;
          m_image = im;
+         m_image_memory = false;
          if( m_verbosity > 3 ) {
             cout<<"[set_image] saving input.bin\n";
             save_binary("input.bin",m_image, m_h, m_w, 1, kutility::TYPE_FLOAT);
@@ -418,6 +420,8 @@ private:
 
    bool m_descriptor_memory;
    bool m_workspace_memory;
+   // becomes false if the user provided float image without need to deep copy
+   bool m_image_memory;
 
    /// the number of grid locations
    int m_grid_point_number;
